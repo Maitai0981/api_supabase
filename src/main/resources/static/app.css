@@ -1,0 +1,136 @@
+/* app.css — Tema IFAM centralizado com .container e botões texto branco */
+:root{
+    --ifam-green-700: #0b7a3b;
+    --ifam-green-600: #0f8d44;
+    --ifam-green-500: #12a153;
+    --ifam-green-400: #32b56a;
+    --ifam-green-100: #eaf7ef;
+    --ifam-green-050: #f4fbf6;
+    --ifam-red-600: #e0001a;
+    --ifam-red-100: #fde8ea;
+    --ink-900: #101410;
+    --ink-700: #2a332a;
+    --border: #cfe3d7;
+    --bg: #f6faf8;
+    --white: #ffffff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+    background: linear-gradient(180deg, var(--bg), #eef7f1);
+    color: var(--ink-900);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height: 1.35;
+}
+/* CENTRALIZA TUDO dentro de .container */
+.container{
+    width: min(960px, 94vw);
+    margin: 24px auto;
+}
+h1{ margin: 0 0 14px; font-size: 2.2rem; color: var(--ifam-green-700); }
+form{ background: color-mix(in srgb, var(--ifam-green-050) 65%, white);
+    border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+.row{ display:flex; gap: 14px; margin: 10px 0; flex-wrap: wrap; }
+label{ display:flex; align-items:center; gap:8px; color: var(--ink-700) }
+input, select, button, .upload-btn {
+    font: inherit; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px;
+}
+input, select{ background: var(--white); min-width: 220px; }
+input:focus, select:focus{
+    outline: none; border-color: var(--ifam-green-500);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifam-green-500) 25%, transparent);
+}
+/* Botões: verde + texto branco */
+button, .upload-btn {
+    cursor: pointer; background: var(--ifam-green-600); color: #ffffff;
+    border-color: transparent; font-weight: 700; letter-spacing: .2px;
+    transition: transform .02s ease, filter .2s ease, box-shadow .2s ease;
+}
+button:hover, .upload-btn:hover { filter: brightness(1.05) }
+button:active, .upload-btn:active { transform: translateY(1px) }
+button:focus, .upload-btn:focus { outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifam-green-400) 35%, transparent); }
+/* Mensagens */
+#msg{ min-height:22px; margin: 14px 0; font-weight: 700; color: var(--ifam-green-600); }
+#msg.err{ color: var(--ifam-red-600); background: var(--ifam-red-100); padding: 10px 12px; border-radius: 10px;
+    border: 1px solid color-mix(in srgb, var(--ifam-red-600) 35%, white); }
+/* Tabela */
+table{
+    width: 100%; border-collapse:collapse; margin-top: 16px; background: var(--white);
+    border:1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+thead th{ background: var(--ifam-green-100); color: var(--ink-900);
+    border-bottom: 1px solid var(--border); font-weight: 700; padding: 12px 14px; text-align: left; }
+td{ padding: 12px 14px; border-bottom: 1px solid var(--border); }
+tbody tr:nth-child(odd){ background: var(--ifam-green-050) }
+tbody tr:hover td{ background: color-mix(in srgb, var(--ifam-green-100) 55%, white) }
+/* Ações */
+a.action{
+    margin-right: 10px; cursor: pointer; font-weight: 600; text-decoration: none; padding: 6px 10px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--white); color: var(--ifam-green-700);
+}
+a.action:hover{ background: var(--ifam-green-100) }
+a.action[data-act="del"]{ color: var(--ifam-red-600); border-color: color-mix(in srgb, var(--ifam-red-600) 40%, var(--border)); }
+a.action[data-act="del"]:hover{ background: var(--ifam-red-100); }
+@media (max-width: 640px){ input, select{ min-width: unset; width: 100%; } .row{ flex-direction: column; } }
+
+/* --- SEÇÃO ADICIONADA --- */
+
+/* Upload de Imagem */
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin: 10px 0;
+}
+.image-container {
+    width: 240px;
+    height: 240px;
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ifam-green-050);
+    overflow: hidden;
+}
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+.image-placeholder {
+    color: var(--ink-700);
+    text-align: center;
+}
+.upload-controls {
+    display: flex;
+    gap: 10px;
+}
+.file-input {
+    display: none;
+}
+/* Botão de remover imagem */
+.remove-btn {
+    background: var(--ifam-red-600);
+}
+.remove-btn:hover {
+    filter: brightness(1.1);
+}
+.remove-btn:focus {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifam-red-600) 35%, transparent);
+}
+
+/* Imagem na Tabela */
+#tabela tbody img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid var(--border);
+}

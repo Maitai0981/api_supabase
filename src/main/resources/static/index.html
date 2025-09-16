@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="container">
+    <h1>Cadastro de Alunos</h1>
+
+    <form id="form">
+        <input type="hidden" id="id">
+
+        <div class="row">
+            <label>Nome* <input id="nome" class="nome" required placeholder="Ex.: Maria Souza"></label>
+            <label>Série <input id="serie" class="serie" placeholder="Ex.: 2º"></label>
+        </div>
+        <div class="row">
+            <label>Sexo
+                <select id="sexo" class="sexo">
+                    <option value="">—</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                    <option value="OUTRO">OUTRO</option>
+                </select>
+            </label>
+            <label>Data <input id="data" class="data" type="date"></label>
+        </div>
+        <div class="row">
+            <button type="submit">Salvar</button>
+            <button type="button" id="limparBtn">Limpar</button>
+            <button type="button" id="recarregarBtn">Recarregar</button>
+        </div>
+    </form>
+
+    <p id="msg"></p>
+
+    <table id="tabela">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Série</th>
+            <th>Sexo</th>
+            <th>Data</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Alunos</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        form { display: flex; flex-direction: column; max-width: 300px; gap: 10px; }
+        input, button { padding: 8px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+<h1>Gestão de Alunos</h1>
+
+<h2>Cadastrar Novo Aluno</h2>
+<form th:action="@{/api/alunos/cadastrar}" th:object="${aluno}" method="post">
+    <input type="text" th:field="*{nome}" placeholder="Nome" required />
+    <input type="text" th:field="*{serie}" placeholder="Série" required />
+    <input type="text" th:field="*{sexo}" placeholder="Sexo" required />
+    <button type="submit">Salvar</button>
+</form>
+
+<h2>Alunos Cadastrados</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Série</th>
+        <th>Sexo</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="a : ${alunos}">
+        <td th:text="${a.id}"></td>
+        <td th:text="${a.nome}"></td>
+        <td th:text="${a.serie}"></td>
+        <td th:text="${a.sexo}"></td>
+        <td>
+            <a th:href="@{/api/alunos/deletar/{id}(id=${a.id})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
